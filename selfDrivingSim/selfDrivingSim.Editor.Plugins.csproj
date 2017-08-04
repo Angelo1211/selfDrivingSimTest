@@ -121,6 +121,10 @@
       <Project>{ED2FA79F-F58A-BA5E-C0C4-FD62303EC9A2}</Project>
       <Name>selfDrivingSim.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="selfDrivingSim.csproj">
+      <Project>{281CFE2B-7B58-8A86-C6ED-BC0B8D99E61C}</Project>
+      <Name>selfDrivingSim</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />

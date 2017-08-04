@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "selfDrivingSim.Plugins", "selfDrivingSim.Plugins.csproj", "{ED2FA79F-F58A-BA5E-C0C4-FD62303EC9A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "selfDrivingSim", "selfDrivingSim.csproj", "{281CFE2B-7B58-8A86-C6ED-BC0B8D99E61C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "selfDrivingSim.Editor.Plugins", "selfDrivingSim.Editor.Plugins.csproj", "{B91B8FC8-5259-B437-D32E-52974CC697CD}"
 EndProject
 Global
@@ -15,6 +17,10 @@ Global
 		{ED2FA79F-F58A-BA5E-C0C4-FD62303EC9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED2FA79F-F58A-BA5E-C0C4-FD62303EC9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED2FA79F-F58A-BA5E-C0C4-FD62303EC9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281CFE2B-7B58-8A86-C6ED-BC0B8D99E61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281CFE2B-7B58-8A86-C6ED-BC0B8D99E61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281CFE2B-7B58-8A86-C6ED-BC0B8D99E61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281CFE2B-7B58-8A86-C6ED-BC0B8D99E61C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B91B8FC8-5259-B437-D32E-52974CC697CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B91B8FC8-5259-B437-D32E-52974CC697CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B91B8FC8-5259-B437-D32E-52974CC697CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
