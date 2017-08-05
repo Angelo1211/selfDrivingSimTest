@@ -14,10 +14,12 @@ public class Scanner : MonoBehaviour {
 
     public LaserLine laserLinePrefab;
 
-    float[] verticalFOVRange = {2f,-24.9f};
-    const float totalVertFOV = 26.9f;
+    public Gradient coloring;
+
+    float[] verticalFOVRange = {-15f,15f};
+    float totalVertFOV = 0f;
     float[] horizontalFOVRange = { 0f, 360f };
-    float totalHorFOV = 360f;
+    float totalHorFOV = 0f;
     [SerializeField]
     float scansPerSecond = 0;
     int scansPerSlice = 0;
@@ -26,6 +28,7 @@ public class Scanner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        InitializeLidarScan();
         createLidarScan();
 	}
 	
@@ -44,19 +47,28 @@ public class Scanner : MonoBehaviour {
         spawn.transform.localPosition = transform.position;
         spawn.transform.localRotation = Quaternion.Euler(tiltAngle);
         spawn.transform.parent = gameObject.transform; 
+        
+            
     }
 
     void createLidarScan() {
-        scansPerSlice = (int)Mathf.Floor(totalVertFOV / verticalAngularRes);
-        numSlice = (int)Mathf.Floor(totalHorFOV / horizontalAngularRes);
+        
         for (int i = 0; i < numSlice; i++) {
             for (int j = 0; j < scansPerSlice; j++) {
 
-                tiltAngle = new Vector3(verticalFOVRange[0]-j*verticalAngularRes, i*horizontalAngularRes, 0);
+                tiltAngle = new Vector3(verticalFOVRange[0]+j*verticalAngularRes, i*horizontalAngularRes, 0);
                 spawnLaserBeam();
 
             }
         }
+        
+    }
+    
+    void InitializeLidarScan() {
+        totalHorFOV = Mathf.Abs(horizontalFOVRange[1] - horizontalFOVRange[0]);
+        totalVertFOV = Mathf.Abs(verticalFOVRange[1] - verticalFOVRange[0]);
+        scansPerSlice = (int)Mathf.Floor(totalVertFOV / verticalAngularRes);
+        numSlice = (int)Mathf.Floor(totalHorFOV / horizontalAngularRes);
         
     }
 }
