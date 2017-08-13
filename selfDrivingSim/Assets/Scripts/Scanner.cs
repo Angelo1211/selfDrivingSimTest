@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Scanner : MonoBehaviour {
 
-    [Range(0.5f, 60f)]
-    public float scanFrequency;
+    [Range(0.1f, 50f)]
+    public float rotationFrequency;
+
+    
 
     [Range(0.08f, 20f)]
     public float horizontalAngularRes;
@@ -22,24 +24,34 @@ public class Scanner : MonoBehaviour {
     float totalHorFOV = 0f;
     [SerializeField]
     float scansPerSecond = 0;
+    [SerializeField]
+    public float scanArea;
     int scansPerSlice = 0;
     int numSlice = 0;
     Vector3 tiltAngle;
+    Transform transform;
+    int count = 0;
 
 	// Use this for initialization
 	void Start () {
+        
+        transform = gameObject.GetComponent<Transform>();
         InitializeLidarScan();
         createLidarScan();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
+        scanArea = 360 * rotationFrequency * Time.deltaTime;
+        Vector3 rotation = new Vector3(0, scanArea);
+
+        transform.Rotate(rotation);
         scansPerSecond = calculateScansPerSecond();
 
-	}
+    }
 
     float calculateScansPerSecond() {
-        return scanFrequency * (totalHorFOV/horizontalAngularRes) * (totalVertFOV/verticalAngularRes);
+        return 64* 1/Time.deltaTime;
     }
 
     void spawnLaserBeam() {
@@ -68,7 +80,7 @@ public class Scanner : MonoBehaviour {
         totalHorFOV = Mathf.Abs(horizontalFOVRange[1] - horizontalFOVRange[0]);
         totalVertFOV = Mathf.Abs(verticalFOVRange[1] - verticalFOVRange[0]);
         scansPerSlice = (int)Mathf.Floor(totalVertFOV / verticalAngularRes);
-        numSlice = (int)Mathf.Floor(totalHorFOV / horizontalAngularRes);
+        numSlice = 1;//(int)Mathf.Floor(totalHorFOV / horizontalAngularRes);
         
     }
 }
