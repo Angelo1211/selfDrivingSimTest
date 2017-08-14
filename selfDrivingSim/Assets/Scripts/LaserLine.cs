@@ -12,22 +12,23 @@ public class LaserLine : MonoBehaviour {
 
     private Gradient gradient;
 
+    public Vector3 endPosition;
+
     void Start() {
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
         laserLineRenderer.SetPositions(initLaserPositions);
-        laserLineRenderer.SetWidth(laserWidth, laserWidth);
         Scanner parent = gameObject.GetComponentInParent<Scanner>();
         gradient = parent.coloring;
     }
 
-    void Update() {
+    void FixedUpdate() {
         ShootLaserFromTargetPosition(transform.position, transform.TransformDirection(Vector3.forward), laserMaxLength);
     }
 
     void ShootLaserFromTargetPosition(Vector3 targetPosition, Vector3 direction, float length) {
         Ray ray = new Ray(targetPosition, direction);
         RaycastHit raycastHit;
-        Vector3 endPosition = Vector3.zero;//targetPosition + (length * direction);
+        endPosition = Vector3.zero;//targetPosition + (length * direction);
 
         if (Physics.Raycast(ray, out raycastHit, length)) {
             endPosition = raycastHit.point;
