@@ -33,6 +33,6 @@ I also included some images for reference but since vertices are represented as 
 
 ## References
 
-* http://developer.download.nvidia.com/CgTutorial/cg_tutorial_appendix_e.html
+* http://developer.download.nvidia.com/CgTutorial/cg_tutorial_frontmatter.html
 * http://velodynelidar.com/hdl-64e.html
 * http://catlikecoding.com/unity/tutorials/
