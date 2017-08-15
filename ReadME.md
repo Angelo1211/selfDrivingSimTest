@@ -4,16 +4,21 @@ This project aims to model a liDAR scanner in a small test city environment usin
 
 The default Unity vehicle controller has been attached to the car and can be used to model the effect of a moving vehicle and the sensor, but will cause significant FPS drops. I recommend you reduce the physics deltaTime to a value around (0.04-0.01) to get above 30fps.
 
-## Getting Started
+## Setting up the Project
 
 This repo includes the project as-is. Including many default assets that were not used in the final version. Download and copy all assets to a new Unity project and make sure to modify the fixedDeltaTime value in the editor to get a more defined point cloud. V-sync should be disabled for better performance.
+
+```
+~Pictures taken with a fixed timestep of 0.0002 and rotation frequency at 5hz to 50hz.
+~Scanner object located within Car object hierarchy.
+```
 
 ### Prerequisites
 
 What things you'll need to install the software:
 
 ```
-Unity3D (Version 2017.1.0f3 (64-bit) was used, not checked for previous versions)
+~Unity3D (Version 2017.1.0f3 (64-bit) was used, not checked for previous versions)
 ```
 
 ### Sample Images & GIF's
