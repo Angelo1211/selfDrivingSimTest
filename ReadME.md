@@ -18,20 +18,23 @@ Unity3D (Version 2017.1.0f3 (64-bit) was used, not checked for previous versions
 
 ### Sample Images
 
-![Alt text]/images/liDARTest1.PNG "Test at 5hz")
+I also included some images for reference but since vertices are represented as single pixels image compression has made it hard to see them. Download the images for better results.
+
+![Alt text](/images/MovingObject.gif "Visual representation of point cloud updating when an object enters it's FOV")
+
+![Alt text](/images/lidarTest2.PNG "Showing Editor view and lidarScan view")
+
+![Alt text](/images/liDARTest1.PNG "Test at 5hz")
+
+
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Angel Ortiz** - ** - [PurpleBooth](https://github.com/Angelo1211)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
+## References
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* http://catlikecoding.com/unity/tutorials/
+* http://developer.download.nvidia.com/CgTutorial/cg_tutorial_appendix_e.html
+* http://velodynelidar.com/hdl-64e.html
