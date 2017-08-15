@@ -2,38 +2,42 @@
 
 Shader "Custom/VertexColor" {
 	SubShader{
-		Pass{
-		LOD 200
+		Pass
+		{		
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
 
-		CGPROGRAM
-#pragma vertex vert
-#pragma fragment frag
+			#include "UnityCG.cginc"
 
-		struct VertexInput {
-		float4 v : POSITION;
-		float4 color: COLOR;
-	};
+			struct appdata {
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+				float4 color: COLOR;				
+			};
 
-	struct VertexOutput {
-		float4 pos : SV_POSITION;
-		float4 col : COLOR;
-	};
+			struct v2f {
+				float4 vertex : SV_POSITION;
+				float2 uv : TEXCOORD0;
+				float4 col : COLOR;
+			};
 
-	VertexOutput vert(VertexInput v) {
+			v2f vert(appdata v) {
 
-		VertexOutput o;
-		o.pos = UnityObjectToClipPos(v.v);
-		o.col = v.color;
+				v2f o;
+				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.col = v.color;
+				o.uv = v.uv;
 
-		return o;
-	}
+				return o;
+			}
 
-	float4 frag(VertexOutput o) : COLOR{
-		return o.col;
-	}
+			float4 frag(v2f o) : SV_Target{
+				return o.col;
+			}
 
-		ENDCG
-	}
+				ENDCG
+			}
 	}
 
 }

@@ -5,66 +5,59 @@ using UnityEngine;
 public class Scanner : MonoBehaviour {
 
     [Range(0.1f, 50f)]
-    public float rotationFrequency;
-    public float verticalAngularRes;
+    public float rotationFrequency;    
+    public float scanArea;
+    public float scansPerSecond = 0;
 
     public LaserLine laserLinePrefab;
-
     public Gradient coloring;
-
-    float[] verticalFOVRange = {-15f,15f};
-    float totalVertFOV = 0f;
-    float[] horizontalFOVRange = { 0f, 360f };
-    float totalHorFOV = 0f;
-    public float scansPerSecond = 0;
-    [SerializeField]
-    public float scanArea;
-    int scansPerSlice = 0;
-    Vector3 tiltAngle;
-    Transform transform;
-    int count = 0;
     public ScannerData dataDict;
+
+    float verticalAngularRes = 0.4f;
+    float[] verticalFOVRange = {-15f,15f};
+    float[] horizontalFOVRange = { 0f, 360f };
+    int scansPerSlice = 64;
+    Vector3 tiltAngle;
+    Transform transform;       
     LaserLine[] laserArray;
     Vector3[] laserPositions;
+    Vector3 rotation;
     
 
 	// Use this for initialization
-	void Start () {
-        scansPerSlice = 64;
-        verticalAngularRes = 0.4f;
+	void Awake() {
         transform = gameObject.GetComponent<Transform>();
         createLidarScan();
-        dataDict = new ScannerData();
-        InvokeRepeating("OutputScans", 1.0f, 1.0f);
+        scanArea = 360 * rotationFrequency * Time.fixedDeltaTime;
+        dataDict = new ScannerData((int)(scansPerSlice*(360/scanArea)));
+        scansPerSecond = calculateScansPerSecond();
+        rotation = new Vector3(0, scanArea, 0);
     }
 	
 	void FixedUpdate () {
-        scanArea = 360 * rotationFrequency * Time.deltaTime;    
-        Vector3 rotation = new Vector3(0, scanArea);
+                
         transform.Rotate(rotation);
-
-        dataDict.addPointsAtAngle(transform.localRotation.eulerAngles[1], laserImpactLocations(laserArray));
-        scansPerSecond = calculateScansPerSecond();
-        count++;
-
-    }
-
-    Vector3[] laserImpactLocations(LaserLine[] laserArray) {
-        for (int i = 0; i < laserArray.Length; i++) {
-            laserPositions[i] = laserArray[i].endPosition;
+        int currentAngle = (int)transform.localRotation.eulerAngles.y;
+        if(currentAngle % 2 == 1) {
+            currentAngle++;
         }
-        return laserPositions;
+
+        updateLaserImpactLocations();
+        dataDict.addPointsAtAngle(currentAngle, laserPositions);
+        
+             
     }
 
 
-
-    void OutputScans() {
-        Debug.Log(count);
-        count = 0;
+    void updateLaserImpactLocations() {
+        for (int i = 0; i < laserArray.Length; i++) {
+            laserPositions[i] = laserArray[i].getRay();
+            //Debug.Log(laserPositions[i]);
+        }
     }
 
     float calculateScansPerSecond() {
-        return 64* 1/Time.deltaTime;
+        return scansPerSlice* 1/Time.fixedDeltaTime;
     }
 
     LaserLine spawnLaserBeam() {

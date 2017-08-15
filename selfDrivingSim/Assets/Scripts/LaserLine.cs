@@ -12,7 +12,7 @@ public class LaserLine : MonoBehaviour {
 
     private Gradient gradient;
 
-    public Vector3 endPosition;
+    private Vector3 endPosition;
 
     void Start() {
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
@@ -21,8 +21,9 @@ public class LaserLine : MonoBehaviour {
         gradient = parent.coloring;
     }
 
-    void FixedUpdate() {
+     public Vector3 getRay() {
         ShootLaserFromTargetPosition(transform.position, transform.TransformDirection(Vector3.forward), laserMaxLength);
+        return endPosition;
     }
 
     void ShootLaserFromTargetPosition(Vector3 targetPosition, Vector3 direction, float length) {
@@ -40,10 +41,10 @@ public class LaserLine : MonoBehaviour {
 
         
 
-        laserLineRenderer.SetPosition(0, targetPosition);
-        laserLineRenderer.SetPosition(1, endPosition);
+        //laserLineRenderer.SetPosition(0, targetPosition);
+        //laserLineRenderer.SetPosition(1, endPosition);
 
-        laserLineRenderer.material.color = gradient.Evaluate(targetPosition.magnitude*3/laserMaxLength);
+        //laserLineRenderer.material.color = gradient.Evaluate(targetPosition.magnitude*3/laserMaxLength);
 
     }
 }

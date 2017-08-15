@@ -16,38 +16,34 @@ public class PointCloud : MonoBehaviour {
     void Start() {
         mesh = new Mesh();
         data = GameObject.Find("Scanner").GetComponent<Scanner>().dataDict;
-        numPoints =(int)GameObject.Find("Scanner").GetComponent<Scanner>().scansPerSecond;
+        numPoints = data.size;
         GetComponent<MeshFilter>().mesh = mesh;
         CreateMesh();
     }
     private void Update() {
-        data = GameObject.Find("Scanner").GetComponent<Scanner>().dataDict;
-        numPoints = (int)GameObject.Find("Scanner").GetComponent<Scanner>().scansPerSecond;
         updateMesh();
     }
 
     void updateMesh() {
+
         points = data.returnDictAsArray();
-        mesh.vertices = data.returnDictAsArray();
-        mesh.SetIndices(indecies, MeshTopology.Points, 0);
-
         for (int i = 0; i < points.Length; ++i) {
-            indecies[i] = i;
-            colors[i] = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+            float mag = points[i].magnitude;
+            colors[i] = new Color((points[i].x/mag)+0.5f, (points[i].y/mag)+0.5f, 0, 1.0f);
         }
-
+        
         mesh.vertices = points;
         mesh.colors = colors;
     }
 
     void CreateMesh() {
-        Vector3[] points = new Vector3[numPoints];
-        int[] indecies = new int[numPoints];
-        Color[] colors = new Color[numPoints];
+        points = new Vector3[numPoints];
+        indecies = new int[numPoints];
+        colors = new Color[numPoints];
         points = data.returnDictAsArray();
         for (int i = 0; i < points.Length; ++i) {
             indecies[i] = i;
-            colors[i] = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+            colors[i] = Color.white;
         }
 
         mesh.vertices = points;
