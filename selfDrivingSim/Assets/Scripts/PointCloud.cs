@@ -30,15 +30,14 @@ public class PointCloud : MonoBehaviour {
     //Currently limited by Unity's 65k vertice limit.
     //try multi mesh next or interpolation next?
     void updateMesh() {
-
+        //for (int i = 0; i < points.Length; ++i) {
+        //    float mag = points[i].magnitude;
+        //    colors[i] = new Color((points[i].x/mag)+0.5f, (points[i].y/mag)+0.5f, 0, 1.0f); //Selects color of vertices and scales down. Should be moved to Shader asap.
+        //}
+        //mesh.colors = colors;
         points = lidarData.returnDictAsArray();
-        for (int i = 0; i < points.Length; ++i) {
-            float mag = points[i].magnitude;
-            colors[i] = new Color((points[i].x/mag)+0.5f, (points[i].y/mag)+0.5f, 0, 1.0f); //Selects color of vertices and scales down. Should be moved to Shader asap.
-        }
-        
         mesh.vertices = points;
-        mesh.colors = colors;
+        
     }
 
     //Initializes mesh.

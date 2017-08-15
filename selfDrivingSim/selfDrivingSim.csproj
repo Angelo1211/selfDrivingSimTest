@@ -78,14 +78,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="selfDrivingSim.Plugins.csproj">
+      <Project>{ED2FA79F-F58A-BA5E-C0C4-FD62303EC9A2}</Project>
+      <Name>selfDrivingSim.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Scripts\LaserLine.cs" />
     <Compile Include="Assets\Scripts\PointCloud.cs" />
-    <Compile Include="Assets\Scripts\ReplacementShaderEffect.cs" />
     <Compile Include="Assets\Scripts\Scanner.cs" />
     <Compile Include="Assets\Scripts\ScannerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\VertexColor.shader" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\CarGuidelines.txt" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />

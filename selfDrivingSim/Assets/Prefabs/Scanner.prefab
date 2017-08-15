@@ -92,9 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fcf9e8fa0a29b479d3d4bbfa9ab5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanFrequency: 0.5
-  horizontalAngularRes: 0.35
-  verticalAngularRes: 26.9
-  laserLinePrefab: {fileID: 114924721774364096, guid: 57b3e04de0cf691408cf79f00b39938e,
+  laserLinePrefab: {fileID: 114065026821154064, guid: 57b3e04de0cf691408cf79f00b39938e,
     type: 2}
+  rotationFrequency: 0
+  scanArea: 0
   scansPerSecond: 0
