@@ -83,7 +83,6 @@
     <Compile Include="Assets\Scripts\ReplacementShaderEffect.cs" />
     <Compile Include="Assets\Scripts\Scanner.cs" />
     <Compile Include="Assets\Scripts\ScannerData.cs" />
-    <Compile Include="Assets\Scripts\VertexPointSize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\VertexColor.shader" />

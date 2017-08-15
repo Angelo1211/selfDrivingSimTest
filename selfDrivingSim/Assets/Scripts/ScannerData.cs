@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//Class that wraps dictionary of Vector3 arrays accessed with int keys representing the angle of scan.
+//Used to store lidar data.
 public class ScannerData {
 
     Dictionary<int, Vector3[]> ScannerPointsDict;
@@ -16,29 +18,19 @@ public class ScannerData {
         size = count;
     }
         
-	
+	//Adds the laser impact location array of a given scan at the current angle.
+    //Will overwrite if values already exist.
 	public void addPointsAtAngle(int angle, Vector3[] values) {
         Vector3[] impacts = new Vector3[values.Length];
-        values.CopyTo(impacts, 0);
+        values.CopyTo(impacts, 0); //Directly copying value to new arrays to avoid reference conflicts.
         ScannerPointsDict[angle] = impacts; 
     }
 
+    //Returns a Vector3 point value at a given angle and laser channel representing distance to laser impact location.
     public Vector3 readPoint(int angle, int channel ) {
         return ScannerPointsDict[angle][channel];
     }
-
-
-    //public Vector3[] returnDictAsArray() {
-    //    int count = 0;
-    //    int[] allKeys = ScannerPointsDict.Keys.ToArray();
-    //    for (int i = 0; i < allKeys.Length; i++) { 
-    //        for (int j = 0; j < ScannerPointsDict[allKeys[i]].Length; ++j) {
-    //            points[count++] = ScannerPointsDict[allKeys[i]][j];
-    //        }            
-    //    }        
-    //    return points;
-    //}
-
+        
     public Vector3[] returnDictAsArray() {
         int count = 0;
         foreach(KeyValuePair<int, Vector3[]> entry in ScannerPointsDict) {
