@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿//Author: Angel Ortiz
+//Date: 08/15/17
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserLine : MonoBehaviour {
 
-    private float laserMaxLength = 60f;
-    private Vector3 endPosition;
+    const float laserMaxLength = 60f;
+    Vector3 endPosition;
 
     //Returns a raycasthit point if the ray "laser" encounters a physics collider, (0,0,0) if it doesn't.
      public Vector3 getRay() {

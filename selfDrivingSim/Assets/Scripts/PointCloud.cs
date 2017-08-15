@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Angel Ortiz
+//Date: 08/15/17
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

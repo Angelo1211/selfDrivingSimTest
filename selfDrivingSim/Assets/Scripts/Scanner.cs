@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Angel Ortiz
+//Date: 08/15/17
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,11 +38,7 @@ public class Scanner : MonoBehaviour {
     void FixedUpdate() {
         transform.Rotate(rotation);
         int currentAngle = (int)transform.localRotation.eulerAngles.y;
-
-        if (currentAngle % 2 == 1) { //Fixing weird floating point issue.
-            currentAngle++;
-        }
-
+        if (currentAngle % 2 == 1) currentAngle++; //Fixing floating point rounding issue.
         updateLaserImpactLocations();
         lidarDataDict.addPointsAtAngle(currentAngle, laserImpactLocs);
     }
@@ -55,7 +54,7 @@ public class Scanner : MonoBehaviour {
         }
 
         scanArea = 360 * rotationFrequency * Time.fixedDeltaTime; //Fixed rotation speed to match physics updates
-        int numOfPoints = (int)(laserChannels * (360 / scanArea)); //Number of points rendered at any given time
+        int numOfPoints = (int)(laserChannels * (360 / scanArea)); //Number of points rendered at any given time ste[
         lidarDataDict = new ScannerData(numOfPoints);
         rotation = new Vector3(0, scanArea, 0); 
     }

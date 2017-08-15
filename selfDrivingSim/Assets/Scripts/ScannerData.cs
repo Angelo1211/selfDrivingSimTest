@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Author: Angel Ortiz
+//Date: 08/15/17
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -30,7 +33,7 @@ public class ScannerData {
     public Vector3 readPoint(int angle, int channel ) {
         return ScannerPointsDict[angle][channel];
     }
-        
+    //Copies all the contents of the dictionary into an array of the size of all of its values. 
     public Vector3[] returnDictAsArray() {
         int count = 0;
         foreach(KeyValuePair<int, Vector3[]> entry in ScannerPointsDict) {
