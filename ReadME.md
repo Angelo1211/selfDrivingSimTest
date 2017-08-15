@@ -1,74 +1,24 @@
-# Project Title
+# LiDAR Scanner modeling in Unity3D
 
-One Paragraph of project description goes here
+This project aims to model a liDAR scanner in a small test city environment using Unity3D as renderer and physics engine. It first reads geometry data from the environment using collision raycasting and returns an impact point array for each  scan. The scan rate is currently limited by Unity's physics engine refresh rate and the maximum mesh size of 65k vertices. Before running the simulation the rotation rate of the scanner can be set which allows for a trade off between angular resolution and refresh rate. The results are rendered using a vertex shader that draws each collision point as a vertex and colors it based on the distance from origin.
+
+The default Unity vehicle controller has been attached to the car and can be used to model the effect of a moving vehicle and the sensor, but currently will cause significant FPS drops. I recommend you reduce the physics deltaTime to a value around (0.04-0.01) to get above 30fps.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This repo includes the project-as is. Including many default assets that were not used in the final version. Download and copy all assets to a new Unity project and make sure to modify the fixedDeltaTime value in the editor to get a more defined point cloud. V-sync should be turned off for better performance.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you'll need to install the software:
 
 ```
-Give examples
+Unity3D (Version 2017.1.0f3 (64-bit) was used, not checked for previous versions)
 ```
 
-### Installing
+### Sample Images
 
-A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
